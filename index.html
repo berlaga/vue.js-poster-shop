@@ -41,6 +41,8 @@
                             <div class="item-qty">{{item.price | currency}} x {{ item.qty}}</span>
                                 <button class="btn" v-on:click="dec(item)">-</button>
                                 <button class="btn" v-on:click="inc(item)">+</button>
+                            </div>
+                        </div>
                     </li>
                 </ul>
                 <div v-if="cart.length > 0">
@@ -49,15 +51,15 @@
                 <div v-else class="empty-cart">
                     No items in the cart
                 </div>
-                </div>
-                </div>
             </div>
+        </div>
+    </div>
 
-            <!-- Scripts -->
-            <script src="reload/reload.js"></script>
-            <script src="node_modules/vue/dist/vue.js"></script>
-            <script src="node_modules/vue-resource/dist/vue-resource.js"></script>
-            <script type="text/javascript" src="public/script.js"></script>
+    <!-- Scripts -->
+    <script src="reload/reload.js"></script>
+    <script src="node_modules/vue/dist/vue.js"></script>
+    <script src="node_modules/vue-resource/dist/vue-resource.js"></script>
+    <script type="text/javascript" src="public/script.js"></script>
 
 </body>
 
