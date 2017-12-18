@@ -7,7 +7,7 @@ new Vue({
         total: 0,
         items: [],
         cart: [],
-        newSearch: "",
+        newSearch: "80s",
         lastSearch: "",
         loading: false 
     },
@@ -80,6 +80,9 @@ new Vue({
         {
             return "$".concat(price.toFixed(2));
         }
+    },
+    mounted: function() {
+        this.onSubmit();
     }
 
 
