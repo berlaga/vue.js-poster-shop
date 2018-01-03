@@ -9,7 +9,8 @@ new Vue({
         cart: [],
         newSearch: "80s",
         lastSearch: "",
-        loading: false 
+        loading: false,
+        price: PRICE 
     },
     methods: {
         onSubmit: function () {
