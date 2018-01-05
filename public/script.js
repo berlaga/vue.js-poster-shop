@@ -1,4 +1,5 @@
 var PRICE = 9.99;
+var LOAD_NUM = 10;
 
 new Vue({
     el: '#app',
@@ -6,28 +7,35 @@ new Vue({
     data: {
         total: 0,
         items: [],
+        results: [],
         cart: [],
         newSearch: "80s",
         lastSearch: "",
         loading: false,
-        price: PRICE 
+        price: PRICE
     },
     methods: {
+
+        appendItems: function(){
+            
+        },
+
         onSubmit: function () {
             this.loading = true;
             this.items = [];
 
             this.$http
-            .get("/search/".concat(this.newSearch))
-            .then(function (res) {
+                .get("/search/".concat(this.newSearch))
+                .then(function (res) {
 
-                this.lastSearch = this.newSearch;
+                    this.lastSearch = this.newSearch;
 
-                this.items= res.data;
+                    this.results = res.data;
+                    this.items = res.data.slice(0, LOAD_NUM);
 
-                this.loading = false;
-               
-            })
+                    this.loading = false;
+
+                })
         },
         addItem: function (index) {
 
@@ -49,7 +57,7 @@ new Vue({
                     id: item.id,
                     title: item.title,
                     qty: 1,
-                    price : PRICE
+                    price: PRICE
                 });
 
             }
@@ -64,27 +72,34 @@ new Vue({
             item.qty--;
             this.total -= PRICE;
 
-            if(item.qty <= 0)
-            {
+            if (item.qty <= 0) {
                 for (let i = 0; i < this.cart.length; i++) {
-                    if(this.cart[i].id === item.id)
-                    {
+                    if (this.cart[i].id === item.id) {
                         this.cart.splice(i, 1);
                         break;
                     }
                 }
             }
-        }        
+        }
     },
     filters: {
-        currency: function(price)
-        {
+        currency: function (price) {
             return "$".concat(price.toFixed(2));
         }
     },
-    mounted: function() {
+    mounted: function () {
         this.onSubmit();
+
+        var vueInstance = this;
+        var elem = document.getElementById("product-list-bottom");
+        var watcher = scrollMonitor.create(elem);
+        
+        watcher.enterViewport(function () {
+            //console.log("Entered viewport..");
+            vueInstance.appendItems();
+        });        
     }
 
-
 });
+
+
