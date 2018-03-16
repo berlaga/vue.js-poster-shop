@@ -17,7 +17,12 @@ new Vue({
     methods: {
 
         appendItems: function(){
-            
+             
+            if(this.items.length < this.results.length)
+            {
+                var append = this.results.slice(this.items.length, this.items.length + LOAD_NUM);
+                this.items = this.items.concat(append);
+            }
         },
 
         onSubmit: function () {
@@ -31,7 +36,7 @@ new Vue({
                     this.lastSearch = this.newSearch;
 
                     this.results = res.data;
-                    this.items = res.data.slice(0, LOAD_NUM);
+                    this.appendItems();
 
                     this.loading = false;
 
