@@ -14,6 +14,13 @@ new Vue({
         loading: false,
         price: PRICE
     },
+    computed:
+    {
+        noMoreItems: function(){
+            return (this.items.length === this.results.length) && this.results.length > 0;
+        }
+    },
+
     methods: {
 
         appendItems: function(){
