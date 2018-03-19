@@ -22,7 +22,7 @@
             <h1>Vue.js Po ster Store</h1>
             <form class="searchbar" v-on:submit.prevent="onSubmit">
                 <input type="text" placeholder="Search for posters" v-model="newSearch">
-                <input type="submit" value="Search" class="btn">
+                <input type="submit" value="Search" class="btn" :disabled="this.newSearch.length === 0">
             </form>
         </div>
         <div class="main">

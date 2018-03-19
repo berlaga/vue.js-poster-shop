@@ -33,21 +33,26 @@ new Vue({
         },
 
         onSubmit: function () {
-            this.loading = true;
-            this.items = [];
 
-            this.$http
-                .get("/search/".concat(this.newSearch))
-                .then(function (res) {
+            if(this.newSearch.length) //search term not empty
+            {
+                this.loading = true;
+                this.items = [];
 
-                    this.lastSearch = this.newSearch;
+                this.$http
+                    .get("/search/".concat(this.newSearch))
+                    .then(function (res) {
 
-                    this.results = res.data;
-                    this.appendItems();
+                        this.lastSearch = this.newSearch;
 
-                    this.loading = false;
+                        this.results = res.data;
+                        this.appendItems();
 
-                })
+                        this.loading = false;
+
+                    })
+            }
+
         },
         addItem: function (index) {
 

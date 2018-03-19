@@ -18,6 +18,11 @@ button:focus, input:focus {
     opacity: 1;
 }
 
+.btn:disabled {
+  
+    cursor: not-allowed;
+    
+}
 .btn:active {
     opacity: 0.8;
 }
