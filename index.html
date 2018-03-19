@@ -29,13 +29,13 @@
             <div class="products">
                 <div v-if="loading">Loading..</div>
                 <div class="search-results" v-if="(items.length > 0) && !loading">
-                    Found {{items.length}} search results for search term {{lastSearch}}
+                    Found {{results.length}} search results for search term {{lastSearch}}
                 </div>
                 <div class="product" v-for="(item, index) in items">
                     <div>
                         <div class="product-image">
                             <img v-bind:src="item.link">
-                        </div>
+                        </div> 
                     </div>
                     <div>
                         <h4 class="product-title">{{item.title}}</h4>
@@ -45,7 +45,9 @@
                         <button class="add-to-cart btn" v-on:click="addItem(index)">Add to cart</button>
                     </div>
                 </div>
-                <div id="product-list-bottom"></div>
+                <div id="product-list-bottom">
+                    <div v-if="(items.length === results.length) && results.length > 0">No more items</div>
+                </div>
             </div>
             <div class="cart">
                 <h2>Shopping Cart</h2>
