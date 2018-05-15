@@ -1,5 +1,5 @@
 
-Instructions
+## Instructions
 
 git clone "git@github.com:berlaga/vue.js-poster-shop.git"
 
