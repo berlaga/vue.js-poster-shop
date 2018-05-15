@@ -1,7 +1,7 @@
 
 ## Instructions
 
-git clone "git@github.com:berlaga/vue.js-poster-shop.git"
+git clone `https://github.com/berlaga/vue.js-poster-shop.git`
 
 
 npm init
