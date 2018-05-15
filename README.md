@@ -1,10 +1,10 @@
 
 Instructions
 
-#git clone [git@github.com:berlaga/vue.js-poster-shop.git]
+git clone "git@github.com:berlaga/vue.js-poster-shop.git"
 
 
-#npm init
+npm init
 
 
-#npm run dev
+npm run dev
